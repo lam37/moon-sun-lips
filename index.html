@@ -74,22 +74,24 @@
     }
 
     const sunSigns = [
-      { sign: "Ma Kết", start: [12, 22], end: [1, 19], color: "Đỏ gạch huyền bí" },
-      { sign: "Bảo Bình", start: [1, 20], end: [2, 18], color: "Hồng tím độc lập" },
-      { sign: "Song Ngư", start: [2, 19], end: [3, 20], color: "Cam san hô mơ mộng" },
-      { sign: "Bạch Dương", start: [3, 21], end: [4, 19], color: "Đỏ rực rỡ cá tính" },
-      { sign: "Kim Ngưu", start: [4, 20], end: [5, 20], color: "Hồng đất ấm áp" },
-      { sign: "Song Tử", start: [5, 21], end: [6, 20], color: "Đỏ dâu tinh nghịch" },
-      { sign: "Cự Giải", start: [6, 21], end: [7, 22], color: "Hồng nude dịu dàng" },
-      { sign: "Sư Tử", start: [7, 23], end: [8, 22], color: "Cam cháy nổi bật" },
-      { sign: "Xử Nữ", start: [8, 23], end: [9, 22], color: "Đỏ đất thanh lịch" },
-      { sign: "Thiên Bình", start: [9, 23], end: [10, 22], color: "Hồng pastel hài hòa" },
-      { sign: "Bọ Cạp", start: [10, 23], end: [11, 21], color: "Đỏ mận quyến rũ" },
-      { sign: "Nhân Mã", start: [11, 22], end: [12, 21], color: "Cam đào phiêu lưu" }
+      { sign: "Ma Kết",       start: [12, 22], end: [1, 19], group: "ĐẤT", color: "Hồng 🌸", scent: "Việt quất 🫐" },
+      { sign: "Bảo Bình",     start: [1, 20],  end: [2, 18], group: "KHÍ",  color: "Cam 🧡",  scent: "Ổi 🍈" },
+      { sign: "Song Ngư",     start: [2, 19],  end: [3, 20], group: "NƯỚC", color: "Tím 💜",  scent: "Cam mật ong 🍊" },
+      { sign: "Bạch Dương",   start: [3, 21],  end: [4, 19], group: "LỬA",  color: "Đỏ 🔴",    scent: "Dưa hấu 🍉" },
+      { sign: "Kim Ngưu",     start: [4, 20],  end: [5, 20], group: "ĐẤT",  color: "Hồng 🌸",  scent: "Vải" },
+      { sign: "Song Tử",      start: [5, 21],  end: [6, 20], group: "KHÍ",  color: "Cam 🧡",  scent: "Lê 🍐" },
+      { sign: "Cự Giải",      start: [6, 21],  end: [7, 22], group: "NƯỚC", color: "Tím 💜",  scent: "Quýt ngọt 🍊" },
+      { sign: "Sư Tử",        start: [7, 23],  end: [8, 22], group: "LỬA",  color: "Đỏ 🔴",    scent: "Lựu đỏ 🍷" },
+      { sign: "Xử Nữ",        start: [8, 23],  end: [9, 22], group: "ĐẤT",  color: "Hồng 🌸",  scent: "Bơ 🥑" },
+      { sign: "Thiên Bình",   start: [9, 23],  end: [10, 22],group: "KHÍ",  color: "Cam 🧡",  scent: "Táo xanh 🍏" },
+      { sign: "Bọ Cạp",       start: [10, 23], end: [11, 21],group: "NƯỚC", color: "Tím 💜",  scent: "Nho đen 🍇" },
+      { sign: "Nhân Mã",      start: [11, 22], end: [12, 21],group: "LỬA",  color: "Đỏ 🔴",    scent: "Dâu rừng 🍓" }
     ];
 
     let sunSign = "";
+    let group = "";
     let color = "";
+    let scent = "";
 
     for (const s of sunSigns) {
       const [startMonth, startDay] = s.start;
@@ -100,17 +102,22 @@
         (startMonth > endMonth && (month > startMonth || month < endMonth))
       ) {
         sunSign = s.sign;
+        group = s.group;
         color = s.color;
+        scent = s.scent;
         break;
       }
     }
 
     document.getElementById("result").innerHTML = `
       🌞 <span class="highlight">Cung Mặt Trời:</span> ${sunSign}<br>
-      💄 <span class="highlight">Màu son dành riêng cho bạn:</span> ${color}<br>
-      ✨ Mỗi thỏi son là một nghi lễ dịu dàng – giúp bạn tỏa sáng theo cách của riêng mình.
+      ✨ <span class="highlight">Nhóm nguyên tố:</span> ${group}<br>
+      💄 <span class="highlight">Màu son :</span> ${color}<br>
+      🍓 <span class="highlight">Mùi hương:</span> ${scent}<br>
+      💫 <i>Vì sắc son thật sự chỉ đẹp nhất khi là của riêng bạn.</i>
     `;
   }
 </script>
+
 </body>
 </html>
