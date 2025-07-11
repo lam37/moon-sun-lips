@@ -26,11 +26,12 @@
     h1 {
       color: #d81b60;
     }
-    input[type="date"] {
+    select {
       padding: 10px;
       font-size: 16px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      margin: 5px;
     }
     button {
       margin-top: 20px;
@@ -57,19 +58,36 @@
 <div class="container">
   <h1>✨ Moon & Sun Lips ✨</h1>
   <p>Nhập ngày sinh để khám phá cung Mặt Trời – Mặt Trăng & màu son định mệnh của bạn 💋</p>
-  <input type="date" id="birthdate">
+
+  <div>
+    <select id="day">
+      <option value="">Ngày</option>
+      ${[...Array(31).keys()].map(i => `<option value="${i+1}">${i+1}</option>`).join('')}
+    </select>
+    <select id="month">
+      <option value="">Tháng</option>
+      ${[...Array(12).keys()].map(i => `<option value="${i+1}">${i+1}</option>`).join('')}
+    </select>
+    <select id="year">
+      <option value="">Năm</option>
+      ${[...Array(100).keys()].map(i => {
+        const year = new Date().getFullYear() - i;
+        return `<option value="${year}">${year}</option>`;
+      }).join('')}
+    </select>
+  </div>
+
   <button onclick="getZodiac()">Giải mã cá tính</button>
   <div class="result" id="result"></div>
 </div>
 
 <script>
   function getZodiac() {
-    const date = new Date(document.getElementById("birthdate").value);
-    const month = date.getUTCMonth() + 1;
-    const day = date.getUTCDate();
+    const day = parseInt(document.getElementById("day").value);
+    const month = parseInt(document.getElementById("month").value);
 
-    if (!month || !day) {
-      document.getElementById("result").innerText = "Hãy nhập ngày sinh hợp lệ nhé!";
+    if (!day || !month) {
+      document.getElementById("result").innerText = "Hãy chọn đầy đủ ngày và tháng sinh nhé!";
       return;
     }
 
@@ -118,6 +136,5 @@
     `;
   }
 </script>
-
 </body>
 </html>
